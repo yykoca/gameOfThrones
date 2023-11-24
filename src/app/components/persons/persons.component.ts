@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-persons',
@@ -6,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./persons.component.scss']
 })
 export class PersonsComponent implements OnInit {
+  persons$: Observable<any> = this.apiService.getData("characters");
 
-  constructor() { }
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
   }

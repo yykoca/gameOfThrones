@@ -1,1 +1,3 @@
-<p>quotes works!</p>
+<section class="container mx-auto" *ngIf="quotes$ | async as quotes">
+  <p *ngFor="let quote of quotes">{{ quote.sentence }}</p>
+</section>

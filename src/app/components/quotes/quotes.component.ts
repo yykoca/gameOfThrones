@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-quotes',
@@ -6,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./quotes.component.scss']
 })
 export class QuotesComponent implements OnInit {
+  quotes$: Observable<any> = this.apiService.getData("random/5");
 
-  constructor() { }
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
   }

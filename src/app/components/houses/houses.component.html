@@ -1,1 +1,3 @@
-<p>houses works!</p>
+<section class="container mx-auto" *ngIf="houses$ | async as houses">
+  <p *ngFor="let house of houses">{{ house.name }}</p>
+</section>
