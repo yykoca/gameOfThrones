@@ -7,6 +7,7 @@ import { HousesComponent } from './components/houses/houses.component';
 import { PersonsComponent } from './components/persons/persons.component';
 import { QuotesComponent } from './components/quotes/quotes.component';
 import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
