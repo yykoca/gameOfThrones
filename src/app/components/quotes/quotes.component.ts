@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component } from '@angular/core';
+import { Observable, Subject, startWith, switchMap } from 'rxjs';
 import { ApiService } from 'src/app/api.service';
 
 @Component({
@@ -7,12 +7,20 @@ import { ApiService } from 'src/app/api.service';
   templateUrl: './quotes.component.html',
   styleUrls: ['./quotes.component.scss']
 })
-export class QuotesComponent implements OnInit {
-  quotes$: Observable<any> = this.apiService.getData("random/5");
+export class QuotesComponent {
+  private readonly quotesSubject$ = new Subject<number>();
+  quotes$: Observable<any> = this.quotesSubject$.pipe(
+    startWith(5),
+    switchMap((quoteCount) => this.apiService.getData(`random/${quoteCount}`)
+   ));
 
   constructor(private apiService: ApiService) {}
 
-  ngOnInit(): void {
+  ngOnDestroy(){
+    this.quotesSubject$.complete();
   }
 
+  generateRandomQuotes(){
+    this.quotesSubject$.next(5);
+  }
 }
