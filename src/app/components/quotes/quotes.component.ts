@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/api.service';
 })
 export class QuotesComponent {
   private readonly quotesSubject$ = new Subject<number>();
-  quotes$: Observable<any> = this.quotesSubject$.pipe(
+  quotes$: Observable<Quote[]> = this.quotesSubject$.pipe(
     startWith(5),
     switchMap((quoteCount) => this.apiService.getData(`random/${quoteCount}`)
    ));

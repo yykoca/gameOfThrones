@@ -7,10 +7,10 @@
 </div>
 
 <ng-container *ngIf="persons$ | async as persons">
-  <section class="container mx-auto grid grid-cols-4 gap-6 p-12" *ngIf="persons.length > 0; else noPersons">
+  <section *ngIf="persons.length > 0; else noPersons" class="container mx-auto grid md:grid-cols-2 xl:grid-cols-3 gap-6 p-12">
     <mat-card *ngFor="let person of persons" style="min-height: 200px;" class="!flex flex-col justify-center">
       <mat-card-title [routerLink]="[person.slug]" class="cursor-pointer">{{ person.name }}</mat-card-title>
-      <mat-card-subtitle *ngIf="person.house">{{ person.house.name }}</mat-card-subtitle>
+      <mat-card-subtitle *ngIf="person.house" [routerLink]="['/houses', person.house.slug]" class="cursor-pointer">{{ person.house.name }}</mat-card-subtitle>
     </mat-card>
   </section>
 </ng-container>

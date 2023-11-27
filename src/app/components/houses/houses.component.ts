@@ -9,12 +9,12 @@ import { ApiService } from 'src/app/api.service';
 })
 export class HousesComponent {
   searchQuery$ = new BehaviorSubject<string>('');
-  houses$: Observable<any> = combineLatest([
+  houses$: Observable<House[]> = combineLatest([
     this.searchQuery$,
     this.apiService.getData("houses")
   ]).pipe(
-    map(([searchQuery, data]) => data.filter((x: any) => {
-      return x.name.toLowerCase().includes(searchQuery.toLowerCase())
+    map(([searchQuery, houses]) => houses.filter((house: House) => {
+      return house.name.toLowerCase().includes(searchQuery.toLowerCase())
     })));
 
   constructor(private apiService: ApiService) {}

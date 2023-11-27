@@ -1,10 +1,12 @@
-<section class="container mx-auto gap-6 p-12" *ngIf="house$ | async as houses">
+<section class="container mx-auto p-12" *ngIf="house$ | async as houses">
   <ng-container *ngFor="let house of houses">
     <h2>The members of {{ house.name }}</h2>
-    <mat-card *ngFor="let member of house.members" class="p-10 my-2">
+    <div class="grid grid-cols-3 gap-6 p-6">
+      <mat-card *ngFor="let member of house.members" [routerLink]="['/persons', member.slug]" class="p-10 my-2 cursor-pointer">
         <mat-card-content>
           {{ member.name }}
         </mat-card-content>
       </mat-card>
-  </ng-container>
+    </div>
+    </ng-container>
 </section>
