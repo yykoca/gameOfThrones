@@ -1,18 +1,24 @@
-<div class="container mx-auto text-end p-12">
-  <mat-form-field>
+<div class="container mx-auto text-center">
+  <mat-form-field appearance="outline" style="min-width: 40%;">
     <mat-label>Search</mat-label>
     <input matInput #searchQuery type="text" (input)="onSearchUpdated(searchQuery.value)" />
+    <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
 </div>
 
-<section class="container mx-auto grid grid-cols-3 gap-6 p-12" *ngIf="houses$ | async as houses">
-  <ng-container *ngFor="let house of houses">
-    <a [routerLink]="[house.slug]">
+<ng-container *ngIf="houses$ | async as houses">
+  <section class="container mx-auto grid grid-cols-3 gap-6 p-12" *ngIf="houses.length > 0; else noHouses">
+    <a *ngFor="let house of houses" [routerLink]="[house.slug]">
       <mat-card class="!flex items-center justify-center" style="min-height: 200px;">
         <mat-card-content class="text-xl">
           {{ house.name }}
         </mat-card-content>
       </mat-card>
     </a>
-  </ng-container>
-</section>
+  </section>
+</ng-container>
+<ng-template #noHouses>
+  <div class="container mx-auto text-center p-12">
+    <p>No house matching your criteria could be found.</p>
+  </div>
+</ng-template>
