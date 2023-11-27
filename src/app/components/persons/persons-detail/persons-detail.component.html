@@ -1,0 +1,18 @@
+<section class="container mx-auto gap-6 p-12" *ngIf="person$ | async as persons">
+  <mat-card *ngFor="let person of persons" class="p-10 my-2">
+    <mat-card-header>
+      <mat-card-title>
+        {{ person.name }}
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{ person.house.name }}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="px-4 py-2" *ngIf="person.quotes.length > 0">
+      <h3>Quotes:</h3>
+      <p *ngFor="let quote of person.quotes">
+        - {{ quote}}
+      </p>
+    </mat-card-content>
+  </mat-card>
+</section>

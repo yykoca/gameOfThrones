@@ -4,11 +4,20 @@ import { HousesComponent } from './components/houses/houses.component';
 import { PersonsComponent } from './components/persons/persons.component';
 import { QuotesComponent } from './components/quotes/quotes.component';
 import { HousesDetailComponent } from './components/houses/houses-detail/houses-detail.component';
+import { PersonsDetailComponent } from './components/persons/persons-detail/persons-detail.component';
 
 const routes: Routes = [
   {
     path: 'persons',
-    component: PersonsComponent,
+    children: [{
+      path: '',
+      component: PersonsComponent,
+    },
+    {
+      path: ':slug',
+      component: PersonsDetailComponent,
+    }
+  ]
   },
   {
     path: 'houses',
