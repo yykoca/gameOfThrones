@@ -8,19 +8,23 @@ import { PersonsComponent } from './components/persons/persons.component';
 import { QuotesComponent } from './components/quotes/quotes.component';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { PersonsDetailComponent } from './components/persons/persons-detail/persons-detail.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonsComponent,
-    QuotesComponent
+    QuotesComponent,
+    PersonsDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
     HttpClientModule,
-    HousesModule
+    HousesModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
