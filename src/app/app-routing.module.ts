@@ -36,7 +36,7 @@ const routes: Routes = [
     path: 'quotes',
     component: QuotesComponent,
   },
-  { path: '**', redirectTo: '/', pathMatch: 'full' },
+  { path: '**', redirectTo: 'houses', pathMatch: 'full' },
 ];
 
 @NgModule({
