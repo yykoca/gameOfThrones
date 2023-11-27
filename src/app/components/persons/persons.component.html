@@ -1,3 +1,6 @@
-<section class="container mx-auto" *ngIf="persons$ | async as persons">
-  <p *ngFor="let person of persons">{{ person.name }}</p>
+<section class="container mx-auto grid grid-cols-4 gap-6 p-12" *ngIf="persons$ | async as persons">
+  <mat-card *ngFor="let person of persons" style="min-height: 200px;" class="!flex flex-col justify-center">
+    <mat-card-title [routerLink]="[person.slug]" class="cursor-pointer">{{ person.name }}</mat-card-title>
+    <mat-card-subtitle *ngIf="person.house">{{ person.house.name }}</mat-card-subtitle>
+  </mat-card>
 </section>
