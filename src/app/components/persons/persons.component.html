@@ -1,13 +1,21 @@
-<div class="container mx-auto text-end p-12">
-  <mat-form-field>
+<div class="container mx-auto text-center">
+  <mat-form-field appearance="outline" style="min-width: 40%;">
     <mat-label>Search</mat-label>
     <input matInput #searchQuery type="text" (input)="onSearchUpdated(searchQuery.value)" />
+    <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
 </div>
 
-<section class="container mx-auto grid grid-cols-4 gap-6 p-12" *ngIf="persons$ | async as persons">
-  <mat-card *ngFor="let person of persons" style="min-height: 200px;" class="!flex flex-col justify-center">
-    <mat-card-title [routerLink]="[person.slug]" class="cursor-pointer">{{ person.name }}</mat-card-title>
-    <mat-card-subtitle *ngIf="person.house">{{ person.house.name }}</mat-card-subtitle>
-  </mat-card>
-</section>
+<ng-container *ngIf="persons$ | async as persons">
+  <section class="container mx-auto grid grid-cols-4 gap-6 p-12" *ngIf="persons.length > 0; else noPersons">
+    <mat-card *ngFor="let person of persons" style="min-height: 200px;" class="!flex flex-col justify-center">
+      <mat-card-title [routerLink]="[person.slug]" class="cursor-pointer">{{ person.name }}</mat-card-title>
+      <mat-card-subtitle *ngIf="person.house">{{ person.house.name }}</mat-card-subtitle>
+    </mat-card>
+  </section>
+</ng-container>
+<ng-template #noPersons>
+  <div class="container mx-auto text-center p-12">
+    <p>No person matching your criteria could be found.</p>
+  </div>
+</ng-template>
