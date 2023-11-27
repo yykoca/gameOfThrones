@@ -1,3 +1,11 @@
-<section class="container mx-auto" *ngIf="houses$ | async as houses">
-  <p *ngFor="let house of houses">{{ house.name }}</p>
+<section class="container mx-auto grid grid-cols-3 gap-6 p-12" *ngIf="houses$ | async as houses">
+  <ng-container *ngFor="let house of houses">
+    <a [routerLink]="[house.slug]">
+      <mat-card class="!flex items-center justify-center" style="min-height: 200px;">
+        <mat-card-content class="text-xl">
+          {{ house.name }}
+        </mat-card-content>
+      </mat-card>
+    </a>
+  </ng-container>
 </section>

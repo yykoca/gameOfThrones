@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/api.service';
 
@@ -7,12 +7,9 @@ import { ApiService } from 'src/app/api.service';
   templateUrl: './houses.component.html',
   styleUrls: ['./houses.component.scss']
 })
-export class HousesComponent implements OnInit {
+export class HousesComponent {
   houses$: Observable<any> = this.apiService.getData("houses");
 
   constructor(private apiService: ApiService) {}
-
-  ngOnInit(): void {
-  }
 
 }

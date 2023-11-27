@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HousesComponent } from './components/houses/houses.component';
+import { HousesModule } from 'src/app/components/houses/houses.module';
 import { PersonsComponent } from './components/persons/persons.component';
 import { QuotesComponent } from './components/quotes/quotes.component';
 import { SharedModule } from './shared/shared.module';
@@ -12,7 +12,6 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    HousesComponent,
     PersonsComponent,
     QuotesComponent
   ],
@@ -20,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    HousesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
