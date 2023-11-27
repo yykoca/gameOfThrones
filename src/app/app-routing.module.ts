@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HousesComponent } from './components/houses/houses.component';
 import { PersonsComponent } from './components/persons/persons.component';
 import { QuotesComponent } from './components/quotes/quotes.component';
+import { HousesDetailComponent } from './components/houses/houses-detail/houses-detail.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,16 @@ const routes: Routes = [
   },
   {
     path: 'houses',
-    component: HousesComponent,
+    children: [
+      {
+        path: '',
+        component: HousesComponent
+      },
+      {
+        path: ':slug',
+        component: HousesDetailComponent
+      },
+    ]
   },
   {
     path: 'quotes',
@@ -23,4 +33,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
