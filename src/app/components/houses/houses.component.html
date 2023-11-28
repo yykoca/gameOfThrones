@@ -7,7 +7,7 @@
 </div>
 
 <ng-container *ngIf="houses$ | async as houses">
-  <section class="container mx-auto grid grid-cols-3 gap-6 p-12" *ngIf="houses.length > 0; else noHouses">
+  <section class="container mx-auto grid md:grid-cols-2 xl:grid-cols-3 gap-6 p-12" *ngIf="houses.length > 0; else noHouses">
     <a *ngFor="let house of houses" [routerLink]="[house.slug]">
       <mat-card class="!flex items-center justify-center" style="min-height: 200px;">
         <mat-card-content class="text-xl">
