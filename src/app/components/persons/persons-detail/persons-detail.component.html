@@ -1,5 +1,10 @@
-<section class="container mx-auto gap-6 p-12" *ngIf="person$ | async as persons">
-  <mat-card *ngFor="let person of persons" class="p-10 my-2">
+<section class="container mx-auto gap-6 p-12" *ngIf="person$ | async as person">
+  <div class="text-center mb-6">
+    <button mat-raised-button (click)="generateRandomQuotes()">
+      Generate Random Quotes
+    </button>
+  </div>
+  <mat-card class="p-10 my-2">
     <mat-card-header>
       <mat-card-title>
         {{ person.name }}
@@ -9,10 +14,10 @@
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content class="px-4 py-2" *ngIf="person.quotes.length > 0">
-      <h3>Quotes:</h3>
-      <p *ngFor="let quote of person.quotes">
-        - {{ quote}}
-      </p>
+      <h2 class="font-bold text-gray-900 px-4">Quotes:</h2>
+      <blockquote *ngFor="let quote of person.quotes" class="text-lg italic font-semibold text-gray-700 px-4">
+        <p>"{{ quote }}"</p>
+      </blockquote>
     </mat-card-content>
   </mat-card>
 </section>
