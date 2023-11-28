@@ -10,7 +10,7 @@ import { ApiService } from 'src/app/api.service';
 })
 export class HousesDetailComponent {
 
-  house$: Observable<HouseDetail[]> = this.route.paramMap.pipe(
+  houseDetail$: Observable<HouseDetail[]> = this.route.paramMap.pipe(
     switchMap((params: ParamMap) => this.apiService.getData('house/' + params.get('slug')!)
       )
   );
